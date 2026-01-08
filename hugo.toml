@@ -15,7 +15,8 @@ enableGitInfo = true
 enableEmoji = true
 
 # Pagination
-paginate = 10
+[pagination]
+  pagerSize = 10
 
 # Taxonomies
 [taxonomies]
@@ -73,7 +74,7 @@ paginate = 10
 [privacy]
   [privacy.googleAnalytics]
     disable = true
-  [privacy.twitter]
+  [privacy.x]
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true
