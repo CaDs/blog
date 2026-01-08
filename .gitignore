@@ -18,7 +18,32 @@ Thumbs.db
 
 # Environment files
 .env
+.env.*
+*.env
 .env.local
+.env.production
+.env.development
+
+# Secrets and credentials (never commit these)
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+credentials.json
+service-account*.json
+*secret*
+*.sqlite
+*.db
+.htpasswd
+config.local.*
+
+# Log files
+*.log
 
 # Node modules (if using npm for assets)
 node_modules/
