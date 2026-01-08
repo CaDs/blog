@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/platform/redirects
+
+# Example redirects (uncomment and modify as needed)
+# /old-page  /new-page  301
+# /blog/*    /posts/:splat  301

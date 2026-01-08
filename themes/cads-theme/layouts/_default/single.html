@@ -1,0 +1,73 @@
+{{ define "main" }}
+<article class="post">
+    <header class="post-header">
+        {{ if .Site.Params.showBreadcrumbs }}
+        <nav class="breadcrumbs">
+            <a href="{{ .Site.BaseURL }}">Home</a>
+            {{ range .Ancestors.Reverse }}
+            <span class="separator">/</span>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+        </nav>
+        {{ end }}
+
+        <h1 class="post-title">{{ .Title }}</h1>
+
+        <div class="post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "January 2, 2006" }}
+            </time>
+            {{ if .Site.Params.showReadingTime }}
+            <span class="separator">|</span>
+            <span class="reading-time">{{ .ReadingTime }} min read</span>
+            {{ end }}
+            {{ with .Params.categories }}
+            <span class="separator">|</span>
+            <span class="categories">
+                {{ range . }}
+                <a href="{{ "categories/" | absURL }}{{ . | urlize }}/">{{ . }}</a>
+                {{ end }}
+            </span>
+            {{ end }}
+        </div>
+
+        {{ with .Params.tags }}
+        <div class="post-tags">
+            {{ range . }}
+            <a href="{{ "tags/" | absURL }}{{ . | urlize }}/" class="tag">#{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </header>
+
+    {{ if .Site.Params.showTableOfContents }}
+    {{ if .TableOfContents }}
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        {{ .TableOfContents }}
+    </nav>
+    {{ end }}
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+
+    {{ if .Site.Params.showPostNavLinks }}
+    <nav class="post-navigation">
+        {{ with .PrevInSection }}
+        <a class="prev" href="{{ .Permalink }}">
+            <span class="nav-label">&larr; Previous</span>
+            <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a class="next" href="{{ .Permalink }}">
+            <span class="nav-label">Next &rarr;</span>
+            <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</article>
+{{ end }}

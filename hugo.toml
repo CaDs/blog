@@ -1,0 +1,84 @@
+# Hugo configuration for cads-tech.dev
+baseURL = 'https://cads-tech.dev/'
+languageCode = 'en-us'
+title = 'CaDs Tech'
+theme = 'cads-theme'
+
+# Build settings
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# Enable useful features
+enableRobotsTXT = true
+enableGitInfo = true
+enableEmoji = true
+
+# Pagination
+paginate = 10
+
+# Taxonomies
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+# Permalinks
+[permalinks]
+  posts = '/posts/:slug/'
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Posts'
+    url = '/posts/'
+    weight = 2
+  [[menu.main]]
+    name = 'About'
+    url = '/about/'
+    weight = 3
+
+# Markup settings
+[markup]
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = 'monokai'
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+# Site parameters
+[params]
+  description = 'A tech blog by CaDs'
+  author = 'CaDs'
+  showReadingTime = true
+  showShareButtons = true
+  showPostNavLinks = true
+  showBreadcrumbs = true
+  showCodeCopyButtons = true
+  showTableOfContents = true
+
+  # Social links
+  [params.social]
+    github = ''
+    twitter = ''
+    linkedin = ''
+
+# Privacy settings for GDPR compliance
+[privacy]
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.twitter]
+    enableDNT = true
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# Output formats
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']

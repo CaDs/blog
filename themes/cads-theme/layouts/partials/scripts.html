@@ -1,0 +1,75 @@
+<script>
+// Theme toggle functionality
+(function() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function getTheme() {
+        return localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
+    }
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+
+    // Set initial theme
+    setTheme(getTheme());
+
+    // Toggle theme on button click
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            const currentTheme = getTheme();
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // Listen for system theme changes
+    prefersDark.addEventListener('change', function(e) {
+        if (!localStorage.getItem('theme')) {
+            setTheme(e.matches ? 'dark' : 'light');
+        }
+    });
+})();
+
+// Mobile menu toggle
+(function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteNav = document.querySelector('.site-nav');
+
+    if (menuToggle && siteNav) {
+        menuToggle.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            siteNav.classList.toggle('active');
+        });
+    }
+})();
+
+// Copy code button functionality
+{{ if .Site.Params.showCodeCopyButtons }}
+(function() {
+    document.querySelectorAll('pre > code').forEach(function(codeBlock) {
+        const pre = codeBlock.parentNode;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-wrapper';
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(pre);
+
+        const button = document.createElement('button');
+        button.className = 'copy-code';
+        button.textContent = 'Copy';
+        wrapper.appendChild(button);
+
+        button.addEventListener('click', function() {
+            navigator.clipboard.writeText(codeBlock.textContent).then(function() {
+                button.textContent = 'Copied!';
+                setTimeout(function() {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        });
+    });
+})();
+{{ end }}
+</script>
