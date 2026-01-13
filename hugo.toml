@@ -2,84 +2,28 @@
 baseURL = 'https://cads-tech.dev/'
 languageCode = 'en-us'
 title = 'CaDs Tech'
-theme = 'cads-theme'
+theme = 'hugo-bearblog'
 
-# Build settings
-buildDrafts = false
-buildFuture = false
-buildExpired = false
+# Author info
+author = 'CaDs'
+copyright = 'Copyright © 2026, CaDs.'
 
-# Enable useful features
+# Generate robots.txt for SEO
 enableRobotsTXT = true
-enableGitInfo = true
-enableEmoji = true
 
-# Pagination
-[pagination]
-  pagerSize = 10
+# Bearblog-style URLs
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"]
 
-# Taxonomies
-[taxonomies]
-  tag = 'tags'
-  category = 'categories'
-
-# Permalinks
 [permalinks]
-  posts = '/posts/:slug/'
+  blog = "/:slug/"
 
-# Menu configuration
-[menu]
-  [[menu.main]]
-    name = 'Home'
-    url = '/'
-    weight = 1
-  [[menu.main]]
-    name = 'Posts'
-    url = '/posts/'
-    weight = 2
-  [[menu.main]]
-    name = 'About'
-    url = '/about/'
-    weight = 3
+[params]
+  description = "A simple tech blog by CaDs"
+  # dateFormat = "2006-01-02"
 
-# Markup settings
 [markup]
   [markup.highlight]
-    codeFences = true
-    guessSyntax = true
-    lineNos = false
     style = 'monokai'
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = false
-
-# Site parameters
-[params]
-  description = 'A tech blog by CaDs'
-  author = 'CaDs'
-  showReadingTime = true
-  showShareButtons = true
-  showPostNavLinks = true
-  showBreadcrumbs = true
-  showCodeCopyButtons = true
-  showTableOfContents = true
-
-  # Social links
-  [params.social]
-    github = ''
-    twitter = ''
-    linkedin = ''
-
-# Privacy settings for GDPR compliance
-[privacy]
-  [privacy.googleAnalytics]
-    disable = true
-  [privacy.x]
-    enableDNT = true
-  [privacy.youtube]
-    privacyEnhanced = true
-
-# Output formats
-[outputs]
-  home = ['HTML', 'RSS']
-  section = ['HTML', 'RSS']
+    lineNos = false
+    codeFences = true

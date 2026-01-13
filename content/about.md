@@ -1,18 +1,11 @@
----
-title: "About"
-description: "Learn more about CaDs Tech"
----
++++
+title = "About"
+menu = "main"
+weight = 3
++++
 
-## About CaDs Tech
+# About
 
-Welcome to CaDs Tech! This blog is dedicated to sharing knowledge about software development, technology trends, and programming tutorials.
+I'm a developer who enjoys building things and sharing what I learn along the way.
 
-### What You'll Find Here
-
-- **Tutorials**: Step-by-step guides on various programming topics
-- **Tech Insights**: Thoughts on emerging technologies and best practices
-- **Project Showcases**: Deep dives into interesting projects and solutions
-
-### Get in Touch
-
-Feel free to reach out through the social links below or open an issue on GitHub if you have any questions or suggestions.
+This blog is built with [Hugo](https://gohugo.io/) using the [Bear Blog](https://github.com/janraasch/hugo-bearblog) theme, and hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
