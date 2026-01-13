@@ -1,5 +1,13 @@
----
-title: "Welcome to CaDs Tech"
++++
+title = "Home"
+menu = "main"
+weight = 1
++++
+
+# CaDs Tech
+
+A simple tech blog about software development, technology, and programming.
+
 ---
 
-Welcome to my tech blog where I share insights, tutorials, and thoughts on software development, technology, and more.
+I write about web development, DevOps, and tools I find useful. Check out the [blog](/blog/) for my latest posts.
