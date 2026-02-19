@@ -1,10 +1,10 @@
 +++
 title = "Hello World"
 date = "2026-01-08"
-description = "First post on CaDs Tech - welcome to the blog!"
+description = "First post on CaDs - welcome to the blog!"
 +++
 
-Welcome to CaDs Tech! This is the first post on my new blog.
+Welcome to CaDs! This is the first post on my new blog.
 
 ## Why I Started This Blog
 

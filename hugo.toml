@@ -1,7 +1,7 @@
 # Hugo configuration for cads-tech.dev
 baseURL = 'https://cads-tech.dev/'
 languageCode = 'en-us'
-title = 'CaDs Tech'
+title = 'CaDs'
 theme = 'hugo-bearblog'
 
 # Author info
@@ -20,7 +20,18 @@ ignoreErrors = ["error-disable-taxonomy"]
 
 [params]
   description = "A simple tech blog by CaDs"
-  # dateFormat = "2006-01-02"
+  dateFormat = "2006-01-02"
+  hideMadeWithLine = true
+
+[[menus.main]]
+  name = "About"
+  url = "/"
+  weight = 1
+
+[[menus.main]]
+  name = "Thoughts"
+  url = "/blog/"
+  weight = 2
 
 [markup]
   [markup.highlight]

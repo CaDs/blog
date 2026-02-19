@@ -1,0 +1,178 @@
+<!-- Google Fonts: DM Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+
+<style>
+  /* ── Base overrides ── */
+  :root {
+    --width: 576px;
+    --font-main: 'DM Sans', sans-serif;
+    --font-secondary: 'DM Sans', sans-serif;
+  }
+
+  /* ── Light mode ── */
+  html {
+    --background-color: #fff;
+    --text-color: #000;
+    --link-color: #000;
+  }
+
+  /* ── Dark mode ── */
+  html[data-theme="dark"] {
+    --background-color: #000;
+    --text-color: #fff;
+    --link-color: #fff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) {
+      --background-color: #000;
+      --text-color: #fff;
+      --link-color: #fff;
+    }
+  }
+
+  /* ── Typography ── */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.025em;
+    font-weight: 600;
+  }
+
+  /* ── Navigation ── */
+  nav a {
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s ease;
+  }
+
+  nav a:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  html[data-theme="dark"] nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* ── Blog post list ── */
+  .posts-list time,
+  .blog-posts time,
+  li time,
+  time {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    color: #737373;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) .posts-list time,
+    html:not([data-theme="light"]) .blog-posts time,
+    html:not([data-theme="light"]) li time,
+    html:not([data-theme="light"]) time {
+      color: #a3a3a3;
+    }
+  }
+
+  html[data-theme="dark"] .posts-list time,
+  html[data-theme="dark"] .blog-posts time,
+  html[data-theme="dark"] li time,
+  html[data-theme="dark"] time {
+    color: #a3a3a3;
+  }
+
+  /* Visited links match text color */
+  a:visited {
+    color: var(--link-color);
+  }
+
+  /* ── Horizontal rules ── */
+  hr {
+    border-style: solid;
+  }
+
+  /* ── Code blocks ── */
+  code {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 0.25rem;
+  }
+
+  pre code {
+    background-color: transparent;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) code {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  html[data-theme="dark"] code {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.875rem;
+    color: #737373;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) .site-footer {
+      color: #a3a3a3;
+    }
+  }
+
+  html[data-theme="dark"] .site-footer {
+    color: #a3a3a3;
+  }
+
+  .site-footer a {
+    color: #737373;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .site-footer a:hover {
+    color: var(--text-color);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html:not([data-theme="light"]) .site-footer a {
+      color: #a3a3a3;
+    }
+    html:not([data-theme="light"]) .site-footer a:hover {
+      color: var(--text-color);
+    }
+  }
+
+  html[data-theme="dark"] .site-footer a {
+    color: #a3a3a3;
+  }
+
+  html[data-theme="dark"] .site-footer a:hover {
+    color: var(--text-color);
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+</style>
