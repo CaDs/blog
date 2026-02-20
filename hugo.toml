@@ -22,6 +22,7 @@ ignoreErrors = ["error-disable-taxonomy"]
   description = "A simple tech blog by CaDs"
   dateFormat = "2006-01-02"
   hideMadeWithLine = true
+  favicon = "favicon.svg"
 
 [[menus.main]]
   name = "About"
