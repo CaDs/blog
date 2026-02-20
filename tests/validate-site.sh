@@ -75,7 +75,7 @@ else
 fi
 
 # Check theme is configured
-if grep -q "theme = 'cads-theme'" hugo.toml; then
+if grep -q "theme = 'hugo-bearblog'" hugo.toml; then
     pass "Theme is configured"
 else
     fail "Theme is not configured in hugo.toml"
@@ -91,13 +91,9 @@ echo "--- Directory Structure Tests ---"
 REQUIRED_DIRS=(
     "archetypes"
     "content"
-    "content/posts"
+    "content/blog"
     "static"
-    "themes/cads-theme"
-    "themes/cads-theme/layouts"
-    "themes/cads-theme/layouts/_default"
-    "themes/cads-theme/layouts/partials"
-    "themes/cads-theme/static/css"
+    "themes/hugo-bearblog"
 )
 
 for dir in "${REQUIRED_DIRS[@]}"; do
@@ -115,14 +111,13 @@ echo ""
 # ===========================================
 echo "--- Template Tests ---"
 
+# Check theme templates exist
 REQUIRED_TEMPLATES=(
-    "themes/cads-theme/layouts/_default/baseof.html"
-    "themes/cads-theme/layouts/_default/list.html"
-    "themes/cads-theme/layouts/_default/single.html"
-    "themes/cads-theme/layouts/index.html"
-    "themes/cads-theme/layouts/partials/head.html"
-    "themes/cads-theme/layouts/partials/header.html"
-    "themes/cads-theme/layouts/partials/footer.html"
+    "themes/hugo-bearblog/layouts/_default/baseof.html"
+    "themes/hugo-bearblog/layouts/_default/list.html"
+    "themes/hugo-bearblog/layouts/_default/single.html"
+    "themes/hugo-bearblog/layouts/partials/header.html"
+    "themes/hugo-bearblog/layouts/partials/footer.html"
 )
 
 for template in "${REQUIRED_TEMPLATES[@]}"; do
@@ -133,19 +128,19 @@ for template in "${REQUIRED_TEMPLATES[@]}"; do
     fi
 done
 
-# Check for basic template structure in baseof.html
-if grep -q '{{- block "main" . }}' themes/cads-theme/layouts/_default/baseof.html; then
-    pass "baseof.html has main block"
-else
-    fail "baseof.html missing main block"
-fi
+# Check local layout overrides
+LOCAL_OVERRIDES=(
+    "layouts/partials/custom_head.html"
+    "layouts/partials/footer.html"
+)
 
-# Check partials are included
-if grep -q '{{- partial "head.html" . -}}' themes/cads-theme/layouts/_default/baseof.html; then
-    pass "baseof.html includes head partial"
-else
-    fail "baseof.html missing head partial include"
-fi
+for override in "${LOCAL_OVERRIDES[@]}"; do
+    if [[ -f "$override" ]]; then
+        pass "Layout override exists: $override"
+    else
+        warn "Missing layout override: $override"
+    fi
+done
 
 echo ""
 
@@ -157,8 +152,7 @@ echo "--- Content Tests ---"
 # Check for required content files
 REQUIRED_CONTENT=(
     "content/_index.md"
-    "content/about.md"
-    "content/posts/_index.md"
+    "content/blog/_index.md"
 )
 
 for content in "${REQUIRED_CONTENT[@]}"; do
@@ -170,17 +164,17 @@ for content in "${REQUIRED_CONTENT[@]}"; do
 done
 
 # Check for at least one blog post
-POST_COUNT=$(find content/posts -name "*.md" -not -name "_index.md" | wc -l)
+POST_COUNT=$(find content/blog -name "*.md" -not -name "_index.md" | wc -l)
 if [[ $POST_COUNT -gt 0 ]]; then
     pass "Found $POST_COUNT blog post(s)"
 else
-    fail "No blog posts found in content/posts/"
+    fail "No blog posts found in content/blog/"
 fi
 
-# Validate front matter in posts
-for post in content/posts/*.md; do
+# Validate front matter in posts (TOML format with +++ delimiters)
+for post in content/blog/*.md; do
     if [[ -f "$post" && "$post" != *"_index.md" ]]; then
-        if head -1 "$post" | grep -q "^---$"; then
+        if head -1 "$post" | grep -q "^+++$"; then
             pass "Valid front matter start in $(basename $post)"
         else
             fail "Invalid front matter in $(basename $post)"
@@ -195,36 +189,16 @@ echo ""
 # ===========================================
 echo "--- Static Assets Tests ---"
 
-if [[ -f "themes/cads-theme/static/css/style.css" ]]; then
-    pass "CSS stylesheet exists"
-
-    # Check CSS has basic structure
-    if grep -q ":root {" themes/cads-theme/static/css/style.css; then
-        pass "CSS has root variables defined"
-    else
-        fail "CSS missing root variables"
-    fi
-
-    # Check dark mode support
-    if grep -q '\[data-theme="dark"\]' themes/cads-theme/static/css/style.css; then
-        pass "CSS has dark mode support"
-    else
-        fail "CSS missing dark mode support"
-    fi
-else
-    fail "CSS stylesheet not found"
-fi
-
 if [[ -f "static/favicon.svg" ]]; then
     pass "Favicon exists"
 else
     warn "Favicon not found"
 fi
 
-if [[ -f "static/robots.txt" ]]; then
-    pass "robots.txt exists"
+if [[ -f "static/_headers" ]]; then
+    pass "Cloudflare _headers file exists"
 else
-    warn "robots.txt not found"
+    warn "_headers file not found"
 fi
 
 echo ""

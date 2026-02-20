@@ -115,8 +115,8 @@ echo ""
 # ===========================================
 echo "--- Template Security Audit ---"
 
-# Check for unsafe HTML rendering
-TEMPLATES=$(find themes -name "*.html" 2>/dev/null)
+# Check for unsafe HTML rendering in both theme and local overrides
+TEMPLATES=$(find themes layouts -name "*.html" 2>/dev/null)
 
 for template in $TEMPLATES; do
     # Check for safeHTML usage (potential XSS if misused)
@@ -127,12 +127,6 @@ for template in $TEMPLATES; do
     # Check for unsafe JS
     if grep -q "safeJS" "$template"; then
         warn "safeJS used in $template - ensure input is trusted"
-    fi
-
-    # Check for raw HTML output without escaping
-    if grep -qE '\{\{[^}]*\.Content[^}]*\}\}' "$template" && ! grep -q "markdownify" "$template"; then
-        # .Content is safe in Hugo as it's processed markdown
-        :
     fi
 done
 
@@ -205,15 +199,6 @@ for template in $TEMPLATES; do
         warn "External stylesheet in $template - ensure integrity attribute is used"
     fi
 done
-
-# Check CSS for external imports
-if [[ -f "themes/cads-theme/static/css/style.css" ]]; then
-    if grep -qE '@import.*http' themes/cads-theme/static/css/style.css; then
-        warn "External CSS import found - consider self-hosting"
-    else
-        secure "No external CSS imports"
-    fi
-fi
 
 secure "Theme uses local assets only"
 

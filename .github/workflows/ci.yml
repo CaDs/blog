@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Run validation tests
         run: |
@@ -25,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Run security audit
         run: |
@@ -38,6 +42,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
