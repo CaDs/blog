@@ -2,12 +2,10 @@
 title = "Home"
 +++
 
-# About
+# Carlos Donderis
 
-I'm a developer who enjoys building things and sharing what I learn along the way.
+I'm **Carlos Donderis**, usually known as **CaDs**. I'm a Spanish 🇪🇸 engineering leader and storyteller living in Tokyo, Japan 🇯🇵, currently working as the VP of Engineering at [Mercari Japan](https://twitter.com/mercari_jp).
 
-This blog is built with [Hugo](https://gohugo.io/) using the [Bear Blog](https://github.com/janraasch/hugo-bearblog) theme, and hosted on [Cloudflare Pages](https://pages.cloudflare.com/).
+I write about technology, lately about AI-related topics, engineering leadership, and, in general, topics I find interesting. 
 
----
-
-I write about web development, DevOps, and tools I find useful. Check out the [Thoughts](/blog/) for my latest posts.
+Check out my [Thoughts](/blog/) for the latest posts.
