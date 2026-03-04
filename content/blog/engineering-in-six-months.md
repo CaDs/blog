@@ -1,7 +1,7 @@
 +++
 title = "I Can't Tell You What Engineering Will Look Like in September"
 date = "2026-03-04"
-draft = true
+draft = false
 description = "A reflection on the pace of AI change in software engineering — and why I've stopped trying to predict the next six months."
 tags = ["ai", "software-engineering", "opinion"]
 categories = []
