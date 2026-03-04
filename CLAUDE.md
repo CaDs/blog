@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Hugo static site blog ("CaDs Tech") deployed to Cloudflare Pages at `cads-tech.dev`. Uses the `hugo-bearblog` theme (Git submodule).
+Hugo static site blog ("CaDs Tech") deployed to Cloudflare Pages at `cads-tech.dev`. Uses the `hugo-bearblog` theme (Git submodule). Requires Hugo Extended v0.140.2+.
 
 ## Commands
 
@@ -37,6 +37,8 @@ bash tests/security-audit.sh
 - **Static assets** in `static/` — includes Cloudflare `_headers` (security headers, caching) and `_redirects`
 - **Archetypes** in `archetypes/default.md` — template for `hugo new` with frontmatter: title, date, draft, description, tags, categories
 - **Hugo config** in `hugo.toml` — taxonomies disabled (bearblog style), Monokai syntax highlighting
+- **Layout overrides** in `layouts/partials/` — custom `header.html`, `footer.html` (social links), and `custom_head.html` (Google Fonts, CSS overrides) that override the theme's defaults
+- **Design**: forced dark-mode only (black `#000` background, white text, `#82acdf` link color). All styling lives in `custom_head.html` via CSS custom properties
 
 ## Content Conventions
 
